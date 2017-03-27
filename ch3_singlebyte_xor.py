@@ -7,9 +7,9 @@ eng_freq = {'!': 0.0009319423636721036, ' ': 0.16920392543521318, '#': 2.3494345
 def score_freq(s):
 	score = 0
 	for c in s:
-		if c in string.printable and c not in "\t\n\r\x0b\x0c":
-			if c.lower() in eng_freq: #todo printable char
-				score = score + eng_freq[c.lower()]
+		if c in string.printable :
+			if c in eng_freq:
+				score = score + eng_freq[c]
 		else:
 			return 0
 	return score
@@ -19,16 +19,16 @@ def bruteforce_singlexor(s):
 	bestDecoded = ''
 	bestKey = 0
 	for i in range(0,256): #extended ascii range
-	    decoded = ''.join(chr(ord(c)^i) for c in hexDecoded)
+	    decoded = ''.join(chr(ord(c)^i) for c in s)
 	    score = score_freq(decoded)
 	    if (score > bestScore):
 	        bestScore = score
 	        bestDecoded = decoded
 	        bestKey = i
-	print bestDecoded, bestKey, bestScore
-
+	# print bestDecoded, bestKey, bestScore
 	return bestDecoded
 
-hexEncoded = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
-hexDecoded  = hexEncoded.decode('hex')
-bruteforce_singlexor(hexDecoded)
+if __name__ == '__main__':
+	hexEncoded = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
+	hexDecoded  = hexEncoded.decode('hex')
+	print bruteforce_singlexor(hexDecoded)
