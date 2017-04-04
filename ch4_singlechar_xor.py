@@ -13,6 +13,7 @@ def detect_singlechar_xor(lines):
                 bestDecoded = xorDecoded
     return bestDecoded
 
-with open('4.txt') as f:
-    lines = f.readlines()
-    print detect_singlechar_xor(lines)
+if __name__ == '__main__':
+    with open('4.txt') as f:
+        lines = f.readlines()
+        print detect_singlechar_xor(lines)
