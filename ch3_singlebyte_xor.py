@@ -25,7 +25,6 @@ def bruteforce_singlexor(s):
 	        bestScore = score
 	        bestDecoded = decoded
 	        bestKey = i
-	# print bestDecoded, bestKey, bestScore
 	return (bestKey, bestDecoded)
 
 if __name__ == '__main__':
